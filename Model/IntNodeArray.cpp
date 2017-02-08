@@ -41,3 +41,17 @@ int IntNodeArray:: getFromIndex(int index)
     return value;
 }
 
+void IntNodeArray:: setAtIndex(int index, int value)
+{
+    assert(index >= 0 && index < size);
+    
+    IntNode* current = front;
+    
+    for (int spot = 0; spot < index; spot ++)
+    {
+        current = current->getNodePointer();
+    }
+    
+    current
+}
+
