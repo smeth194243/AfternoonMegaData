@@ -36,7 +36,7 @@ void DataStructureController :: testIntArray()
         cout << temp.getFromIndex(index) << " is at spot " << index << endl;
     }
     
-    cout << "Testing input " << endl;
+    cout << "Testing IntNodeArray input " << endl;
     
     for(int index = 0; index < 3; index++)
     {

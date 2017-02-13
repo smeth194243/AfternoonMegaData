@@ -4,8 +4,8 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
+      <x>30</x>
+      <y>30</y>
       <w>170</w>
       <h>70</h>
     </coordinates>
@@ -16,8 +16,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
-      <y>30</y>
+      <x>110</x>
+      <y>160</y>
       <w>390</w>
       <h>240</h>
     </coordinates>
@@ -37,11 +37,24 @@ bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>60</x>
+      <y>110</y>
+      <w>930</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>Typed Sample
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>340</y>
-      <w>380</w>
+      <x>650</x>
+      <y>220</y>
+      <w>280</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>IntNodeArray
@@ -53,6 +66,46 @@ bg=blue</panel_attributes>
 + setAtIndex(int index, int value) : void
 + getFromIndex(int index) : int
 + getSize() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>290</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+l..n</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>490</y>
+      <w>400</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Node&lt;Type&gt;
+--
+Data Members
+-nodeData : Type
+- nodePointer : Node&lt;Type&gt; *
+--
+Constructors
+
++ Node() : constructor
++ Node(Type value) : constructor
++ Node(Type data, Node&lt;Type&gt; * pointer) : constructor
+
+Methods
+
++ getNodeData() : Type
++ getNodePointer() : Node&lt;Type&gt; *
++ setNodeData(TypeData) : void
++ setNodePointer(Node&lt;Type&gt; * next) : void</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

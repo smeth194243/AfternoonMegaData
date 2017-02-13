@@ -52,6 +52,10 @@ void IntNodeArray:: setAtIndex(int index, int value)
         current = current->getNodePointer();
     }
     
-    current
+    //current
 }
 
+int IntNodeArray:: getSize()
+{
+    return size;
+}
