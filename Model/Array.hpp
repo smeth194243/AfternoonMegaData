@@ -53,4 +53,38 @@ Array<Type> :: Array(int size)
     }
 }
 
+template <class Type>
+void Array<Type> :: setAtIndex(int index, Type data)
+{
+    assert(index >= 0 && index < size);
+    
+    Node<Type> * current = front;
+    
+    Node<Type> * current = front;
+    for(int spot = 0; spot < index; spot++)
+    {
+        current = current-> setNodePointer();
+    }
+    
+    current->getNodeData(data);
+}
+
+template <class Type>
+Type Array <Type> :: getFromIndex(int index)
+{
+    assert(index > 0 && index < size);
+    
+    Type value;
+    
+    Node<Type> * current = front;
+    for(int position = 0; position < index; position++)
+    {
+        current = current-> getNodePointer();
+    }
+    
+    value = current->getNodeData();
+    
+    return value;
+}
+
 #endif /* Array_hpp */
