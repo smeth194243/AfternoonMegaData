@@ -40,4 +40,18 @@ public:
 
 };
 
+template <class Type>
+List<Type> :: List<Type>()
+{
+    //Hi.
+}
+
+template <class Type>
+List<Type> :: List()
+{
+    //Hi.
+}
+
+
+
 #endif /* List_h */
