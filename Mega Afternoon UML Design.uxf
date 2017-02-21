@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>290</x>
-      <y>640</y>
-      <w>170</w>
-      <h>70</h>
+      <x>345</x>
+      <y>320</y>
+      <w>85</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Created by Seth Morris
 bg=blue</panel_attributes>
@@ -16,10 +16,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>350</y>
-      <w>400</w>
-      <h>270</h>
+      <x>240</x>
+      <y>175</y>
+      <w>200</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>Node&lt;Type&gt;
 --
@@ -44,10 +44,10 @@ Methods
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
-      <y>70</y>
-      <w>390</w>
-      <h>240</h>
+      <x>225</x>
+      <y>35</y>
+      <w>195</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>IntNode
 --
@@ -67,10 +67,10 @@ Methods
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
+      <x>200</x>
       <y>0</y>
-      <w>930</w>
-      <h>330</h>
+      <w>465</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Typed Sample
 --
@@ -80,10 +80,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>130</y>
-      <w>280</w>
-      <h>130</h>
+      <x>495</x>
+      <y>65</y>
+      <w>140</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>IntNodeArray
 --
@@ -99,10 +99,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>200</y>
-      <w>180</w>
-      <h>30</h>
+      <x>415</x>
+      <y>100</y>
+      <w>90</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
@@ -110,21 +110,22 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>430</y>
-      <w>110</w>
-      <h>40</h>
+      <x>435</x>
+      <y>220</y>
+      <w>55</w>
+      <h>20</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..n</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>360</y>
-      <w>490</w>
-      <h>340</h>
+      <x>480</x>
+      <y>180</y>
+      <w>245</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>Array&lt;Type&gt;
 --
@@ -148,5 +149,44 @@ Methods
 + setAtIndex(int index, Type Value) : void
 + getFromIndex(int index) : Type</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>485</x>
+      <y>400</y>
+      <w>215</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Model :: List&lt;Type&gt;
+--
+- size: int
+- front : Node&lt;Type&gt;*
+--
++ List&lt;Type&gt;() : constructor
++ List&lt;Type&gt;(const List&lt;Type&gt; &amp; source) : copy constructor
++ ~List&lt;Type&gt;() : destructor
+
++ addAtIndex(int index, Type value) : void
++ add(Type value) : void
++ remove(int index) : Type
++ setAtIndex(int index, Type data) : Type
++ getFromIndex(int index) : Type
++ contains(Type data) : bool
++ getSize() const ; int
++ getFront() const : Node&lt;Type&gt;*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>280</y>
+      <w>65</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..n</panel_attributes>
+    <additional_attributes>110.0;310.0;70.0;310.0;70.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

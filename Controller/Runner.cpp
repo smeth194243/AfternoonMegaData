@@ -8,6 +8,8 @@
 
 #include "DataStructureController.hpp"
 
+#include <iostream>
+using namespace std;
 int main()
 {
     DataStructureController * data = new DataStructureController();

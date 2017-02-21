@@ -31,7 +31,8 @@ void DataStructureController :: start()
     cout << "Starting the project" << endl;
     
     cout << "Switching to the array testing" << endl;
-    testIntArray();
+    //testIntArray();
+    testAdvancedFeatures();
     cout << "Finished testing" << endl;
 }
 
@@ -59,7 +60,7 @@ void DataStructureController :: testIntArray()
     }
 }
 
-void testAdvancedFeatures()
+void DataStructureController :: testAdvancedFeatures()
 {
     int showDestructor = 0;
     
