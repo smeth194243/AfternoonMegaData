@@ -4,8 +4,8 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>30</x>
-      <y>20</y>
+      <x>290</x>
+      <y>640</y>
       <w>170</w>
       <h>70</h>
     </coordinates>
@@ -16,10 +16,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>480</y>
+      <x>80</x>
+      <y>350</y>
       <w>400</w>
-      <h>160</h>
+      <h>270</h>
     </coordinates>
     <panel_attributes>Node&lt;Type&gt;
 --
@@ -44,8 +44,8 @@ Methods
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>160</y>
+      <x>50</x>
+      <y>70</y>
       <w>390</w>
       <h>240</h>
     </coordinates>
@@ -67,8 +67,8 @@ Methods
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>40</x>
-      <y>110</y>
+      <x>0</x>
+      <y>0</y>
       <w>930</w>
       <h>330</h>
     </coordinates>
@@ -80,8 +80,8 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>220</y>
+      <x>590</x>
+      <y>130</y>
       <w>280</w>
       <h>130</h>
     </coordinates>
@@ -99,8 +99,8 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>290</y>
+      <x>430</x>
+      <y>200</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
@@ -110,27 +110,27 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>550</y>
-      <w>130</w>
-      <h>30</h>
+      <x>470</x>
+      <y>430</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>90.0;10.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>480</y>
-      <w>260</w>
-      <h>160</h>
+      <x>560</x>
+      <y>360</y>
+      <w>490</w>
+      <h>340</h>
     </coordinates>
     <panel_attributes>Array&lt;Type&gt;
 --
 Data Members
 
-- front : Node&lt;Type&gt;
+- front : Node&lt;Type&gt;*
 - size : int
 
 --
@@ -138,6 +138,10 @@ Constructors
 + Array() : constructor
 + array(int size) : constructor
 
+Advanced
+
++ ~Array&lt;Type&gt;(): destructor
++ Array&lt;Type&gt;(const Array&lt;Type&gt; &amp; toBeCopied) : copy constructor
 Methods
 
 + getSize(): int
