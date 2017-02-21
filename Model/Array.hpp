@@ -94,4 +94,42 @@ Type Array <Type> :: getFromIndex(int index)
     return value;
 }
 
+
+
+//const denotes that the
+
+template <class Type>
+int Array<Type> :: getSize() const
+{
+    return size;
+}
+
+/*
+ the role of the destructor is to de-allocate all memory 
+ called by the use of the 'new' keyword. This is to prevent
+ problems such as memory leaks.
+ the destructor is never called by the programmer; rather, 
+ the destructor is called with either the variable goes out of scope or the pointer to the variable is deleted.
+ the count and cout statements are temporary and will be deleted.
+ */
+template <class Type>
+Array<Type> :: ~Array()
+{
+    int count = size;
+    Node<Type> * remove = front;
+    while(front != nullptr)
+    {
+        //move the next node in array
+        front = front->getNodePointer();
+        cout << "Moving to the next node. At: " << count << endl;
+        //Delete the front pointer
+        delete remove;
+        cout << "Deleting the old pointer." << endl;
+        //Move delete to the next front
+        remove = front;
+        ccount "Moving the new front pointer." << endl;
+        count--;
+        cout << "Front is at: " << front << " count is: " << count << endl;
+    }
+}
 #endif /* Array_hpp */
