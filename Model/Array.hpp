@@ -24,8 +24,15 @@ public:
     Array();
     Array(int size);
     
+    //Destructor
+    ~Array<Type>();
+    //Copy Constructor
+    Array<Type>(const Array<Type> & toBeCopied);
+    
     //Methods
-    int getSize();
+    int getSize() const;
+    Node<Type> * getFront() const;
+    
     void setAtIndex(int index, Type value);
     Type getFromIndex(int index);
     
