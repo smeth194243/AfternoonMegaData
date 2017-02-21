@@ -6,9 +6,12 @@
 //  Copyright © 2017 Morris, Seth. All rights reserved.
 //
 
-#include <stdio.h>
+#include "DataStructureController.hpp"
 
 int main()
 {
+    DataStructureController * data = new DataStructureController();
+    data->start();
+    
     return 0;
 }

@@ -11,6 +11,7 @@
 
 #include "../Model/Node.hpp"
 #include <string>
+#include "../Model/Array.hpp"
 
 using namespace std;
 class DataStructureController
@@ -20,6 +21,7 @@ private:
     Node<int> numberNode;
     Node<string> wordNode;
     void testNodes();
+    void testAdvancedFeatures();
 public:
     DataStructureController();
     void start();

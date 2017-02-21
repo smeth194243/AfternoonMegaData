@@ -10,7 +10,9 @@
 #define Array_hpp
 
 #include "Node.hpp"
-#incldue <assert.h>
+#include <assert.h>
+#include <iostream>
+using namespace std;
 
 template <class Type>
 
@@ -18,7 +20,7 @@ class  Array
 {
 private:
     int size;
-    node<Type> * front;
+    Node<Type> * front;
 public:
     //Constructor
     Array();
@@ -54,7 +56,7 @@ Array<Type> :: Array(int size)
     
     for (int index = 1; index < size; index ++)
     {
-        Node<Type() * current = new Node<Type>();
+        Node<Type> *  current= new Node<Type>();
         current->setNodePointer(front);
         front = current;
     }
@@ -67,19 +69,19 @@ void Array<Type> :: setAtIndex(int index, Type data)
     
     Node<Type> * current = front;
     
-    Node<Type> * current = front;
+   // Node<Type> * current = front;
     for(int spot = 0; spot < index; spot++)
     {
-        current = current-> setNodePointer();
+        current = current-> getNodePointer();
     }
     
-    current->getNodeData(data);
+    current->setNodeData(data);
 }
 
 template <class Type>
 Type Array <Type> :: getFromIndex(int index)
 {
-    assert(index > 0 && index < size);
+    assert(index >= 0 && index < size);
     
     Type value;
     
@@ -127,7 +129,7 @@ Array<Type> :: ~Array()
         cout << "Deleting the old pointer." << endl;
         //Move delete to the next front
         remove = front;
-        ccount "Moving the new front pointer." << endl;
+        cout <<  "Moving the new front pointer." << endl;
         count--;
         cout << "Front is at: " << front << " count is: " << count << endl;
     }
