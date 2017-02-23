@@ -106,6 +106,7 @@ int Array<Type> :: getSize() const
     return size;
 }
 
+
 /*
  the role of the destructor is to de-allocate all memory 
  called by the use of the 'new' keyword. This is to prevent

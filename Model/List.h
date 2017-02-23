@@ -20,6 +20,7 @@ class List
 private:
     int size;
     Node<Type> * front;
+    Node<Type> * end;
 public:
     //Constructor
     List<Type>();
@@ -53,5 +54,70 @@ List<Type> :: List()
 }
 
 
+template <class Type>
+Node<Type> * List<Type> :: addFront(Type value)
+{
+    if(size ==0)
+    {
+        Node<Type> * first = new Node<Type>(value);
+        this->front = first;
+        this->end = first;
+    }
+    else
+    {
+        Node<Type> * newFirst = new Node<Type>();
+        newFirst->setNodeData(value);
+        newFirst->setNodePointer(front);
+        this->front = newFirst;
+    }
+    size++;
+}
 
+template <class Type>
+void List<Type> :: addEnd(Type data)
+{
+    Node<Type> * added = new Node<Type>(data);
+    if(size == 0)
+    {
+        this->front = added;
+        this->end = added;
+    }
+    else
+    {
+        end->setNodePointer(added);
+        this->end = added;
+    }
+    size++;
+}
+
+template <class Type>
+void List<Type> :: addAtIndex(int index, Type value)
+{
+    assert (index >= 0 && index <= size);
+    
+    if(index == 0)
+    {
+        addFront(value);
+    }
+    else if (index == size)
+    {
+        addEnd(value);
+    }
+    else
+    {
+        Node<Type> * insertedNode = new Node<Type>(value);
+        Node<Type> * current = front;
+        Node<Type> * previous = nullptr;
+        
+        for(int position = 0; position < index; position++)
+        {
+            previous = current;
+            current = current->getNodePointer();
+        }
+        previous->setNodePointer(inserted);
+        insertedNode->setNodePointer(current);
+        
+        size++;
+    }
+}
 #endif /* List_h */
