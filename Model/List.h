@@ -10,7 +10,7 @@
 #define List_h
 
 #include <assert.h>
-#include 
+#include "Node.hpp"
 
 using namespace std;
 
@@ -64,7 +64,7 @@ List<Type> :: List()
     this->end = nullptr;
 }
 
-template <class<Type>
+template <class Type>
 int List<Type> :: getSize() const
 {
     return this->size;
@@ -83,7 +83,7 @@ Node<Type> * List<Type> :: getEnd() const
 }
 
 template <class Type>
-Node<Type> * List<Type> :: addFront(Type value)
+void List<Type> :: addFront(Type value)
 {
     if(size ==0)
     {
@@ -142,7 +142,7 @@ void List<Type> :: addAtIndex(int index, Type value)
             previous = current;
             current = current->getNodePointer();
         }
-        previous->setNodePointer(inserted);
+        previous->setNodePointer(insertedNode);
         insertedNode->setNodePointer(current);
         
         size++;
@@ -169,7 +169,7 @@ Type List<Type> :: setAtIndex(int index, Type data)
 }
 
 template <class Type>
-void List<Type> :: remove(int index)
+Type List<Type> :: remove(int index)
 {
     assert(index >= 0 && index < size);
     Type removed;
@@ -214,7 +214,7 @@ void List<Type> :: remove(int index)
     return removed;
 }
 
-template <class Tyoe>
+template <class Type>
 Type List<Type> :: getFromIndex(int index)
 {
     assert(index >= 0 && index < size );
@@ -240,7 +240,7 @@ bool List<Type> :: contains(Type findMe)
     {
         if(current->getNodeData == findMe)
         {
-            isIntList = true;
+            isInList = true;
             return isInList;
         }
     }

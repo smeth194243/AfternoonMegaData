@@ -9,12 +9,15 @@
 #include "DataStructureController.hpp"
 #include <iostream>
 #include "../Model/IntNodeArray.hpp"
+#include "../Model/List.h"
+
 using namespace std;
 
 DataStructureController:: DataStructureController()
 {
     wordNode = Node<string> ("Derpy McConfuzzledface");
     numberNode = Node<int> ();
+    sample = List<int> ();
 }
 
 void DataStructureController:: testNodes()
@@ -33,6 +36,7 @@ void DataStructureController :: start()
     cout << "Switching to the array testing" << endl;
     //testIntArray();
     testAdvancedFeatures();
+    testListIntro();
     cout << "Finished testing" << endl;
 }
 

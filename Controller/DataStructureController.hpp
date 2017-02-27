@@ -12,14 +12,17 @@
 #include "../Model/Node.hpp"
 #include <string>
 #include "../Model/Array.hpp"
+#include "../Model/List.h"
 
 using namespace std;
+
 class DataStructureController
 {
 private:
     void testIntArray();
     Node<int> numberNode;
     Node<string> wordNode;
+    List<int> sample;
     void testNodes();
     void testAdvancedFeatures();
     void testListIntro();
