@@ -31,28 +31,56 @@ public:
     
     //Methods
     void addAtIndex(int index, Type value);
-    void add(Type value);
+    void addFront(Type value);
+    void addEnd(Type value);
     Type remove(int index);
     Type setAtIndex(int index, Type data);
     Type getFromIndex(int index);
-    bool contains(Type data);
-    int getSize();
-    Node<Type>* getFront();
+    bool contains(Type value);
+    int getSize() const ;
+    Node<Type>* getFront() const;
+    Node<Type> * getEnd() const;
+    
 
 };
 
 template <class Type>
-List<Type> :: List<Type>()
+List<Type> :: ~List()
 {
-    //Hi.
+    Node<Type> * destruction = front;
+    while(front != nullptr)
+    {
+        front = front->getNodePointer();
+        delete destruction;
+        destruction = front;
+    }
 }
 
 template <class Type>
 List<Type> :: List()
 {
-    //Hi.
+    this->size = 0;
+    this->front = nullptr;
+    this->end = nullptr;
 }
 
+template <class<Type>
+int List<Type> :: getSize() const
+{
+    return this->size;
+}
+
+template<class Type>
+Node<Type> * List<Type> :: getFront() const
+{
+    return this->front;
+}
+
+template<class Type>
+Node<Type> * List<Type> :: getEnd() const
+{
+    return this->end;
+}
 
 template <class Type>
 Node<Type> * List<Type> :: addFront(Type value)
@@ -119,5 +147,51 @@ void List<Type> :: addAtIndex(int index, Type value)
         
         size++;
     }
+}
+
+template <class Type>
+void List<Type> :: removeAtIndex(int index)
+{
+    assert(index >= 0 && index < size);
+    Type removed;
+    
+    Node<Type> * current = front;
+    Node<Type> * previous = nullptr;
+    Node<Type> * toBeRemoved = nullptr;
+    
+    if(index == 0)
+    {
+        toBeRemoved = front;
+        this->front = front->getNodePointer();
+    }
+    else if(index == size -1)
+    {
+        for(int spot = 0; spot < index; spot++)
+        {
+            previous = current;
+            current = current->getNodePointer();
+        }
+    toBeRemoved = current;
+    previous->setNodePointer(nullptr);
+    this->end = previous;
+    }
+    else
+    {
+        for(int spot = 0; spot < index; spot++)
+        {
+            previous = current;
+            current = current->getNodePointer();
+        }
+        
+        toBeRemoved = current;
+        current = toBeRemoved->getNodePointer();
+        previous->setNodePointer(current);
+    }
+    removed = toBeRemoved->getNodeData();
+    
+    delete toBeRemoved;
+    
+    size --;
+    return removed;
 }
 #endif /* List_h */
