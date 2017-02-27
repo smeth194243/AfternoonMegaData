@@ -150,7 +150,26 @@ void List<Type> :: addAtIndex(int index, Type value)
 }
 
 template <class Type>
-void List<Type> :: removeAtIndex(int index)
+Type List<Type> :: setAtIndex(int index, Type data)
+{
+    assert(index >= 0 && index < size);
+    Type removedData;
+    
+    Node<Type> * current = front;
+    
+    for(int spot = 0; spot < index; spot++)
+    {
+        current = current->getNodePointer();
+    }
+    
+    removedData = current->getNodeData();
+    current->setNodeData(data);
+    
+    return removedData;
+}
+
+template <class Type>
+void List<Type> :: remove(int index)
 {
     assert(index >= 0 && index < size);
     Type removed;
@@ -193,5 +212,38 @@ void List<Type> :: removeAtIndex(int index)
     
     size --;
     return removed;
+}
+
+template <class Tyoe>
+Type List<Type> :: getFromIndex(int index)
+{
+    assert(index >= 0 && index < size );
+    Type information;
+    
+    Node<Type> * current = front;
+    for (int position = 0; position < index; position++)
+    {
+        current = current->getNodePointer();
+    }
+    
+    information = current->getNodeData();
+    return information;
+}
+
+template <class Type>
+bool List<Type> :: contains(Type findMe)
+{
+    bool isInList = false;
+    Node<Type> * current = front;
+    
+    for (int index = 0; index < size; index++)
+    {
+        if(current->getNodeData == findMe)
+        {
+            isIntList = true;
+            return isInList;
+        }
+    }
+    return isInList;
 }
 #endif /* List_h */

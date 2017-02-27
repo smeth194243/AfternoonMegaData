@@ -22,6 +22,7 @@ private:
     Node<string> wordNode;
     void testNodes();
     void testAdvancedFeatures();
+    void testListIntro();
 public:
     DataStructureController();
     void start();
