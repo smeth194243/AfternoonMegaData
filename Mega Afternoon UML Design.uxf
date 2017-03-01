@@ -302,11 +302,11 @@ virtual methods
     <coordinates>
       <x>470</x>
       <y>860</y>
-      <w>110</w>
+      <w>90</w>
       <h>260</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-0..n</panel_attributes>
+m2=0..n</panel_attributes>
     <additional_attributes>10.0;240.0;70.0;240.0;70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
