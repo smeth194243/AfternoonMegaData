@@ -396,7 +396,8 @@ m2=0..n</panel_attributes>
 
 +addFront(Type data) : void
 + addEnd(Type data) : void
-+ addAtIndex(int index, Type data)</panel_attributes>
++ addAtIndex(int index, Type data) : void
++ addAtIndexFast(int index, Type value) : void  </panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
