@@ -261,7 +261,21 @@ virtual methods
       <w>182</w>
       <h>126</h>
     </coordinates>
-    <panel_attributes>Queue</panel_attributes>
+    <panel_attributes>Queue
+--
+- front : BiDirectionalNode&lt;Type&gt;*
+- end: BiDirectionalNode&lt;Type&gt;*
+- size: int
+--
++ Queue() : constructor
++ ~Queue(): destructor
+
++ add(Type data) : void
++ remove(int index) : Type
+
++ enqueue(Type data) : void
++ dequeue() : Type
++ peek() : Type</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -285,10 +299,17 @@ virtual methods
     </coordinates>
     <panel_attributes>CircularlyLinkedList
 --
-- front : BiDirectionalNode * 
+- front : BiDirectionalNode&lt;Type&gt; *
+- end: BiDirectionalNode&lt;Type&gt;*
+- size: int 
 --
-+ add(Type) : void
-+ addAtIndex(int index, Type data): void</panel_attributes>
++ CircularlyLinkedList() : constructor
++ ~CircularlyLinkedList() : destructor
+
++ add(Type data) : void
++ remove(int index) : Type
+
++ addAtIndex(int index, Type data) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -324,10 +345,21 @@ m2=0..n</panel_attributes>
     </coordinates>
     <panel_attributes>Stack
 --
-
+- front : BiDirectionalNode&lt;Type&gt;*
+- end: BiDirectionalNode&lt;Type&gt;*
+- size: int
 --
++ Stack() : constructor
++ ~Stack() : destructor
+
++ push(Type data) : void
++ pop() : Type
++ peek() : Type
+
 + add(Type data) : void
-+ remove(int index) : TYPE</panel_attributes>
++ remove(int index) : Type
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -340,5 +372,31 @@ m2=0..n</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>170.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>938</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>DoubleList&lt;Type&gt;
+--
+- front: BiDirectionalNode&lt;Type&gt; *
+- end : BiDirectionalNode&lt;Type&gt; *
+- size : int
+--
+
++ DoubleList() : constructor
++ ~DoubleList() : destructor
+
++ add(Type data) : void
++ remove(int index) : Type
+
++addFront(Type data) : void
++ addEnd(Type data) : void
++ addAtIndex(int index, Type data)</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
