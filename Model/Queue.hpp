@@ -27,6 +27,21 @@ public:
 };
 
 template <class Type>
+Queue<Type> :: Queue() : DoublyLinkedList()
+{
+    
+}
+
+Queue<Type> :: ~Queue()
+{
+    BiDirectionalNode<Type> * remove = this->getFront();
+    while(remove != nullptr)
+    {
+        
+    }
+}
+
+template <class Type>
 void Queue<Type> :: add(Type value)
 {
     enqueue(value);
