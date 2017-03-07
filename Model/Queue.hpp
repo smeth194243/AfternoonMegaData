@@ -31,7 +31,7 @@ Queue<Type> :: Queue() : DoublyLinkedList<Type>()
 {
     
 }
-
+template <class Type>
 Queue<Type> :: ~Queue()
 {
     BiDirectionalNode<Type> * remove = this->getFront();
