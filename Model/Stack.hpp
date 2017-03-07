@@ -77,6 +77,13 @@ Type Stack<Type> :: remove(int index)
 }
 
 template <class Type>
+Type Stack<Type> :: peek()
+{
+    assert(this->getSize() > 0);
+    return this->getEnd()->getNodeData();
+}
+
+template <class Type>
 Type Stack<Type> :: pop()
 {
     assert(this->getSize() > 0);
