@@ -27,7 +27,7 @@ public:
 };
 
 template <class Type>
-Queue<Type> :: Queue() : DoublyLinkedList()
+Queue<Type> :: Queue() : DoublyLinkedList<Type>()
 {
     
 }
@@ -35,9 +35,11 @@ Queue<Type> :: Queue() : DoublyLinkedList()
 Queue<Type> :: ~Queue()
 {
     BiDirectionalNode<Type> * remove = this->getFront();
-    while(remove != nullptr)
+    while(this->getFront() != nullptr)
     {
-        
+        this->setFront(this->getFront()->getNextPointer());
+        delete remove;
+        remove = this->getFront();
     }
 }
 
