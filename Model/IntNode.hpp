@@ -13,7 +13,7 @@ class IntNode
 {
 private:
     int nodeData;
-    IntNode * nodePointer;
+    IntNode * nextPointer;
 public:
     //Constructor
     IntNode();
@@ -25,7 +25,7 @@ public:
     
     //Methods
     int getNodeData();
-    IntNode * getNodePointer();
+    IntNode * getNextPointer();
     void setNodeData(int value);
     
     void setNodePointer(IntNode * next);
