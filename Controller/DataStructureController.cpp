@@ -35,8 +35,11 @@ void DataStructureController :: start()
     
     cout << "Switching to the array testing" << endl;
     //testIntArray();
-    testAdvancedFeatures();
-    testListIntro();
+    //testAdvancedFeatures();
+    //testListIntro();
+    testFoodQueue();
+    testIntStack();
+    
     cout << "Finished testing" << endl;
 }
 
@@ -100,6 +103,36 @@ void DataStructureController:: testListIntro()
     }
     
     cout << "Size should read 3 and is " << sample.getSize() << endl;
+}
+
+void DataStructureController:: testIntStack()
+{
+    Stack<int> numberStack;
+    numberStack.add(2315);
+    numberStack.push(32);
+    int testValue = numberStack.pop();
+    numberStack.peek();
+    numberStack.remove(2);
+    
+    cout << "Test value is " << testValue << " and should be 32" << endl;
+}
+
+void DataStructureController:: testFoodQueue()
+{
+    Queue<FoodItem>tastyFood;
+    FoodItem MLGPasta("dankest pasta ever");
+    
+    tastyFood.enqueue(MLGPasta);
+    FoodItem boring;
+    tastyFood.add(boring);
+    tastyFood.peek();
+    
+//  FoodItem added = tastyFood.enqueue(FoodItem data);
+ //   cout << "The item added to the queue was: " << added.getCost() << " and should be: 424.20" << endl;
+    
+    
+    FoodItem removed = tastyFood.dequeue();
+    cout << "The item removed from the queue was: " << removed.getFoodName() << " and should be: dankest pasta ever" << endl;
 }
 
 

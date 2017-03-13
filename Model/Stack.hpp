@@ -23,8 +23,8 @@ public:
     Type remove(int index);
     Type pop();
     Type peek();
-    Type push(Type data);
-}
+    void push(Type data);
+};
 
 template <class Type>
 Stack<Type> :: Stack() : DoublyLinkedList<Type>()

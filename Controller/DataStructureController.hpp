@@ -30,6 +30,7 @@ private:
     void testNodes();
     void testAdvancedFeatures();
     void testListIntro();
+    void testIntStack();
     void testFoodQueue();
 public:
     DataStructureController();
