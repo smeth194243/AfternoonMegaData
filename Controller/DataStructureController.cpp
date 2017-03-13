@@ -112,7 +112,7 @@ void DataStructureController:: testIntStack()
     numberStack.push(32);
     int testValue = numberStack.pop();
     numberStack.peek();
-    numberStack.remove(2);
+    //numberStack.remove(2);
     
     cout << "Test value is " << testValue << " and should be 32" << endl;
 }
@@ -121,6 +121,8 @@ void DataStructureController:: testFoodQueue()
 {
     Queue<FoodItem>tastyFood;
     FoodItem MLGPasta("dankest pasta ever");
+    
+    cout << "The size is: " << tastyFood.getSize() << endl;
     
     tastyFood.enqueue(MLGPasta);
     FoodItem boring;
@@ -133,6 +135,8 @@ void DataStructureController:: testFoodQueue()
     
     FoodItem removed = tastyFood.dequeue();
     cout << "The item removed from the queue was: " << removed.getFoodName() << " and should be: dankest pasta ever" << endl;
+    
+    cout << "The size is: " << tastyFood.getSize() << endl;
 }
 
 

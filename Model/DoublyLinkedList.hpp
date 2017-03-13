@@ -55,6 +55,12 @@ int DoublyLinkedList<Type> :: getSize() const
 }
 
 template <class Type>
+Type DoublyLinkedList<Type> :: remove(<#int index#>)
+{
+    
+}
+
+template <class Type>
 BiDirectionalNode<Type> * DoublyLinkedList<Type>  :: getFront() const
 {
     return this->front;
