@@ -13,6 +13,10 @@
 #include <string>
 #include "../Model/Array.hpp"
 #include "../Model/List.h"
+#include "../Model/FoodItem.hpp"
+#include "../Model/Stack.hpp"
+#include "../Model/Queue.hpp"
+#include "../Model/CircularList.hpp"
 
 using namespace std;
 
@@ -26,6 +30,7 @@ private:
     void testNodes();
     void testAdvancedFeatures();
     void testListIntro();
+    void testFoodQueue();
 public:
     DataStructureController();
     void start();
