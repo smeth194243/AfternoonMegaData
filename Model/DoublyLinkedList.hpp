@@ -55,7 +55,7 @@ int DoublyLinkedList<Type> :: getSize() const
 }
 
 template <class Type>
-Type DoublyLinkedList<Type> :: remove(<#int index#>)
+Type DoublyLinkedList<Type> :: remove(int index)
 {
     
 }

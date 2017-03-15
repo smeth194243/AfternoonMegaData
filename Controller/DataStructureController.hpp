@@ -32,6 +32,7 @@ private:
     void testListIntro();
     void testIntStack();
     void testFoodQueue();
+    void testCircularList();
 public:
     DataStructureController();
     void start();

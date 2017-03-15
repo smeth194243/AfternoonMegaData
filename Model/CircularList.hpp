@@ -77,8 +77,8 @@ void CircularList<Type> :: add(Type data)
     
     if(this->getSize() ==0)
     {
-        this->setFront(addMe)
-        this->setEnd(addMe)
+        this->setFront(addMe);
+        this->setEnd(addMe);
         addMe->setPreviousPointer(this->getFront());
         this->getFront()->setNextPointer(this->getEnd());
     }
