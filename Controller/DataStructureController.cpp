@@ -10,6 +10,11 @@
 #include <iostream>
 #include "../Model/IntNodeArray.hpp"
 #include "../Model/List.h"
+#include "../Model/Queue.hpp"
+#include "../Model/FoodItem.hpp"
+#include "../Model/Stack.hpp"
+#include "../Model/CircularList.hpp"
+#include "../Model/DoubleList.hpp"
 
 using namespace std;
 
@@ -137,6 +142,36 @@ void DataStructureController:: testFoodQueue()
     cout << "The item removed from the queue was: " << removed.getFoodName() << " and should be: dankest pasta ever" << endl;
     
     cout << "The size is: " << tastyFood.getSize() << endl;
+}
+
+void DataStructureController:: testStack()
+{
+    
+}
+
+void DataStructureController:: testQueue()
+{
+    Queue<FoodItem> tastyFood;
+    FoodItem SteakBurger("Finest piece of meat on Earth");
+    
+    cout << "The size is: " << tastyFood.getSize() << endl;
+    
+    tastyFood.enqueue(SteakBurger);
+    FoodItem boring2;
+    tastyFood.add(boring2);
+    tastyFood.peek();
+    
+    FoodItem removed2 = tastyFood.dequeue();
+    cout << "The item removed from the queue was: " << removed2.getFoodName()
+    << " and should be : Finest piece of meat on Earth" << endl;
+    
+    cout << "The size is: " << tastyFood.getSize() << endl;
+    
+}
+
+void DataStructureController:: testDoubleList()
+{
+    
 }
 
 

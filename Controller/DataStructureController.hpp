@@ -17,6 +17,7 @@
 #include "../Model/Stack.hpp"
 #include "../Model/Queue.hpp"
 #include "../Model/CircularList.hpp"
+#include "../Model/DoubleList.hpp"
 
 using namespace std;
 
@@ -33,6 +34,9 @@ private:
     void testIntStack();
     void testFoodQueue();
     void testCircularList();
+    void testStack();
+    void testQueue();
+    void testDoubleList();
 public:
     DataStructureController();
     void start();
