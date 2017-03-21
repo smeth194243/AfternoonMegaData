@@ -228,3 +228,34 @@ void DataStructureController :: testListTiming()
     cout << "When you do the BiDirectional way you get: " << averageFast << endl;
 }
 
+void DataStructureController :: testList()
+{
+    List<string> theList;
+    theList.addFront("method ");
+    theList.addEnd("works");
+    theList.addFront("The add");
+    theList.addEnd("as it should.");
+    
+    for(int index = 0; index < theList.getSize(); index++)
+    {
+        cout << theList.getFromIndex(index) << endl;
+    }
+    
+    for(int index = 0; index < theList.getSize(); index++)
+    {
+        cout << theList.remove(index) << endl;
+    }
+    
+    theList.addFront("The list is as new");
+    theList.addFront("Now it contains these words");
+    
+    for(int index = 0; index < theList.getSize(); index++)
+    {
+        cout << theList.getFromIndex(index) << endl;
+    }
+    
+    if (theList.contains("words"))
+    {
+        cout << "The contains function works" << endl;
+    }
+}
