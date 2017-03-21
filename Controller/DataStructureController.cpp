@@ -15,6 +15,7 @@
 #include "../Model/Stack.hpp"
 #include "../Model/CircularList.hpp"
 #include "../Model/DoubleList.hpp"
+#include "../Model/Timer.hpp"
 
 using namespace std;
 
@@ -42,8 +43,8 @@ void DataStructureController :: start()
     //testIntArray();
     //testAdvancedFeatures();
     //testListIntro();
-    testFoodQueue();
-    testIntStack();
+    //testQueue();
+    testStack();
     
     cout << "Finished testing" << endl;
 }
@@ -146,7 +147,19 @@ void DataStructureController:: testFoodQueue()
 
 void DataStructureController:: testStack()
 {
+    Stack<int> plateStack;
+    plateStack.add(1234);
+    plateStack.push(5678);
+    plateStack.push(7384);
+    cout << "The size of the list before removing is: " << plateStack.getSize() << endl;
+    int testValue = plateStack.pop();
     
+    cout << "The size of the list after removing is: " << plateStack.getSize() << endl;
+    plateStack.peek();
+    //plateStack.remove(1234);
+    
+    
+    cout << "Test value is " << testValue << " and should be 7384" << endl;
 }
 
 void DataStructureController:: testQueue()
@@ -169,9 +182,49 @@ void DataStructureController:: testQueue()
     
 }
 
-void DataStructureController:: testDoubleList()
+void DataStructureController :: testListTiming()
 {
+    DoubleList<int> timingList;
+    Timer totalTimer;
+    totalTimer.startTimer();
+    for(int index = 0; index < 10000; index++)
+    {
+        
+        timingList.add(rand());
+        
+    }
+    long slowTime [1000];
+    long fastTime [1000];
+    double averageSlow = 0.00, averageFast = 0.00;
+    Timer doubleTimer;
     
+    for(int index = 0; index < 1000; index++)
+    {
+        
+        int randomIndex = rand() % 10000;
+        doubleTimer.startTimer();
+        timingList.getFromIndex(randomIndex);
+        doubleTimer.startTimer();
+        slowTime[index] = doubleTimer.getExectutionTimeInMicroseconds();
+        doubleTimer.resetTimer();
+        
+        
+        doubleTimer.startTimer();
+        timingList.getFromIndexFast(randomIndex);
+        doubleTimer.stopTimer();
+        fastTime[index] = doubleTimer.getExectutionTimeInMicroseconds();
+        doubleTimer.resetTimer();
+        
+        averageSlow += slowTime[index];
+        averageFast += fastTime[index];
+        
+        
+    }
+    
+    averageSlow += averageSlow/1000.00;
+    averageFast += averageFast/1000.00;
+    
+    cout << "When you do it in one diretion searching you get an average of: "  << averageSlow<< endl;
+    cout << "When you do the BiDirectional way you get: " << averageFast << endl;
 }
-
 
