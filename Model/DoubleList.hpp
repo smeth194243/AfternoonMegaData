@@ -9,6 +9,7 @@
 #ifndef DoubleList_h
 #define DoubleList_h
 #include "../Model/DoublyLinkedList.hpp"
+#include <assert.h>
 
 template <class Type>
 class DoubleList : public DoublyLinkedList<Type>
