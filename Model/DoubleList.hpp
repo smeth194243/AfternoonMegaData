@@ -177,6 +177,22 @@ int DoubleList<Type> :: indexOf(Type findMe)
         }
         searchPointer = searchPointer->getNextPointer();
     }
+    
+    int alternate = 0;
+    
+    for(BiDirectionalNode<Type> * search = this->getFront();
+        search != nullptr;
+        search = search->getNextPointer())
+    {
+        if(findMe != search->getNodeData())
+        {
+            alternate++;
+        }
+    }
+    if(alternate >= this->getSize())
+    {
+        return -1;
+    }
     return index;
 }
 
