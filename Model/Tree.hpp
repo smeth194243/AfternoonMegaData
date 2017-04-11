@@ -19,19 +19,23 @@ private:
     bool balanced;
 public:
     Tree();
-    int getSize() const;
-    int getHeight() const;
-    bool isComplete() const;
-    bool isBalanced() const;
-    void setSize(int size);
-    void setHeight(int height);
-    void setComplete(bool complete);
-    void setBalanced(bool balanced);
     virtual ~Tree();
     virtual void printToFile() = 0;
     virtual void inOrderTranversal() = 0;
     virtual void preOrderTraversal() = 0;
     virtual void postOrderTraversal() = 0;
+    
+    int getSize() const;
+    int getHeight() const;
+    bool isComplete() const;
+    bool isBalanced() const;
+    
+    void setSize(int size);
+    void setHeight(int height);
+    void setComplete(bool complete);
+    void setBalanced(bool balanced);
+    
+    
 };
 
 template<class Type>
