@@ -30,11 +30,22 @@ public:
     void printToFile();
 };
 template<class Type>
-BinarySearchTree<Type>::BinarySearchTree() :
-Tree<Type>()
+BinarySearchTree<Type>::BinarySearchTree() : Tree<Type>()
 {
-    root = nullptr;
+    this->root = nullptr;
 }
+
+template<class Type>
+BinarySearchTreeNode<Type> * BinarySearchTree<Type>::getRoot()
+{
+    return root;
+}
+template<class Type>
+void BinarySearchTree<Type>::setRoot(BinarySearchTreeNode<Type> * root)
+{
+    this->root = root;
+}
+
 template<class Type>
 BinarySearchTree<Type>::~BinarySearchTree()
 {
@@ -76,19 +87,9 @@ void BinarySearchTree<Type>::postOrderTraversal(BinarySearchTreeNode<Type> * roo
     
 }
 template<class Type>
-BinarySearchTreeNode<Type> * BinarySearchTree<Type>::getRoot()
-{
-    return root;
-}
-template<class Type>
-void BinarySearchTree<Type>::setRoot(BinarySearchTreeNode<Type> * root)
-{
-    this->root = root;
-}
-template<class Type>
 int BinarySearchTree<Type>::calculateSize(BinarySearchTreeNode<Type> * start)
 {
-    
+    return -99;
 }
 
 #endif /* BinarySearchTree_h */
