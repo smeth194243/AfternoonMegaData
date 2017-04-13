@@ -99,4 +99,47 @@ int BinarySearchTree<Type>::calculateSize(BinarySearchTreeNode<Type> * start)
     return -99;
 }
 
+template <class Type>
+void BinarySearchTree<Type> :: insert(Type itemToInsert)
+{
+    BinarySearchTreeNode<Type> * insertMe = new BinarySearchTreeNode<Type>(itemToInsert);
+    BinarySearchTreeNode<Type> * previous = nullptr;
+    BinarySearchTreeNode<Type> * current = root;
+    
+    if(current == nullptr)
+    {
+        root = insertMe;
+    }
+    else
+    {
+        while (current != nnullptr)
+        {
+            previous = current;
+            if(itemToInsert < current->getNodeData())
+            {
+                current = current->getLeftChild();
+            }
+            else if(ItemToInsert > current->getNodeData())
+            {
+                current = current->getRightChild();
+            }
+            else
+            {
+                cerr << "Item exists already - Exiting" << endl;
+                delete insertMe;
+                return;
+            }
+        }
+        if (previous->getNodeData() > itemToInsert)
+        {
+            previous->setLeftChild(InsertMe);
+        }
+        else
+        {
+            previous->setRightChild(insertMe);
+        }
+        insertMe->setRootPointer(previous);
+    }
+}
+
 #endif /* BinarySearchTree_h */
