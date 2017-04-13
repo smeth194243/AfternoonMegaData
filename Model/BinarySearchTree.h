@@ -19,6 +19,8 @@ private:
     void inOrderTraversal(BinarySearchTreeNode<Type> * root);
     void preOrderTraversal(BinarySearchTreeNode<Type> * root);
     void postOrderTraversal(BinarySearchTreeNode<Type> * root);
+    
+    void removeNode(BinarySearchTreeNode<Type> * root);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -28,6 +30,11 @@ public:
     BinarySearchTreeNode<Type> * getRoot();
     void setRoot(BinarySearchTreeNode<Type> * root);
     void printToFile();
+    void demoTraversalSteps(BinarySearchTreeNode<Type> * node);
+    
+    bool contains(Type value);
+    void insert(Type itemToInsert);
+    void remove(Type value);
 };
 template<class Type>
 BinarySearchTree<Type>::BinarySearchTree() : Tree<Type>()
