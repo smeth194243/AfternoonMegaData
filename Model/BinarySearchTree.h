@@ -13,24 +13,38 @@
 template<class Type>
 class BinarySearchTree: public Tree<Type>
 {
-private:
+protected:
     BinarySearchTreeNode<Type> * root;
-    int calculateSize(BinarySearchTreeNode<Type> * start);
-    void inOrderTraversal(BinarySearchTreeNode<Type> * root);
-    void preOrderTraversal(BinarySearchTreeNode<Type> * root);
-    void postOrderTraversal(BinarySearchTreeNode<Type> * root);
     
-    void removeNode(BinarySearchTreeNode<Type> * root);
+    int calculateSize(BinarySearchTreeNode<Type> * root);
+    int calculateHeight(BinarySearchTreeNode<Type>* root);
+    bool isBalanced(BinarySearchTreeNode<Type>* root);
+    bool isComplete(BinarySearchTreeNode<Type>* root);
+    
+    void inOrderTraversal(BinarySearchTreeNode<Type> * inStart);
+    void preOrderTraversal(BinarySearchTreeNode<Type> * preStart);
+    void postOrderTraversal(BinarySearchTreeNode<Type> * postStart);
+    
+    void removeNode(BinarySearchTreeNode<Type> * removeMe);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
+    
+    BinarySearchTreeNode<Type> * getRoot();
+    void setRoot(BinarySearchTreeNode<Type> * root);
+    
     void inOrderTraversal();
     void preOrderTraversal();
     void postOrderTraversal();
-    BinarySearchTreeNode<Type> * getRoot();
-    void setRoot(BinarySearchTreeNode<Type> * root);
-    void printToFile();
+    
+    
+    //void printToFile();
     void demoTraversalSteps(BinarySearchTreeNode<Type> * node);
+    
+    int getSize();
+    int getHeight();
+    bool isComplete();
+    bool isBalanced();
     
     bool contains(Type value);
     void insert(Type itemToInsert);
