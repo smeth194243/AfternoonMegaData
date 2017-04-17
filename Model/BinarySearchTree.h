@@ -122,10 +122,60 @@ void BinarySearchTree<Type>::postOrderTraversal(BinarySearchTreeNode<Type> * roo
         cout << "Node Contents: " << postStart->getNodeData() << endl;
     }
 }
+
+template <class Type.
+bool BinarySearchTree<Type> :: isBalanced(BinarySearchTreeNode<Type> * start)
+{
+    int leftHeight = 0;
+    int rightHeight = 0;
+    
+    if(start == nullptr)
+    {
+        return true;
+    }
+    
+    leftHeight = calculateHeight(start->getLeftChild());
+    rightHeight = calculateHeight(start->getRightChild());
+    
+    int heightDifference = abs(leftHeight-rightHeight);
+    bool leftBalanced = isBalanced(start->getLeftChild());
+    bool rightBalanced = isBalanced(start->getRightChild());
+    
+    if(heightDifference <= 1 && leftBalanced && rightBalanced)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+template<class Type>
+int BinarySearchTree<Type> :: calculateHeight(BinarySearchTreeNode<Type> * start)
+{
+    if(start == nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1 + max(calculateHeight(start->getLeftChild()), calculateHeight(start->getRightChild()));
+    }
+}
+
 template<class Type>
 int BinarySearchTree<Type>::calculateSize(BinarySearchTreeNode<Type> * start)
 {
-    return -99;
+    int count = 1;
+    if(start == nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        count += calculateSize(start->getLeftChild());
+        count += calculateSize(start->getRightChild());
+        return count;
+    }
 }
 
 template <class Type>
@@ -349,5 +399,30 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
     {
         setRoot(removeMe);
     }
+}
+
+template <class Type>
+int BinarySearchTree<Type> :: getSize()
+{
+    return calculateSize(root);
+}
+
+template <class Type>
+int BinarySearchTree<Type> :: getHeight()
+{
+    return calculateHeight(root);
+}
+
+template <class Type>
+bool BinarySearchTree<Type> :: isBalanced()
+{
+    return isBalanced(root);
+}
+
+template <class Type>
+bool BinarySearchTree<type> :: isComplete()
+
+{
+    return isComplete(root);
 }
 #endif /* BinarySearchTree_h */
