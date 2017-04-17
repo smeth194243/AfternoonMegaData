@@ -70,7 +70,7 @@ void BinarySearchTree<Type>::setRoot(BinarySearchTreeNode<Type> * root)
 template<class Type>
 BinarySearchTree<Type>::~BinarySearchTree()
 {
-    
+    delete root;
 }
 template<class Type>
 void BinarySearchTree<Type>::printToFile()
