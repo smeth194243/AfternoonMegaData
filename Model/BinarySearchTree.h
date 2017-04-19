@@ -72,11 +72,11 @@ BinarySearchTree<Type>::~BinarySearchTree()
 {
     delete root;
 }
-template<class Type>
-void BinarySearchTree<Type>::printToFile()
-{
+//template<class Type>
+//void BinarySearchTree<Type>::printToFile()
+//{
     
-}
+//}
 template<class Type>
 void BinarySearchTree<Type>::inOrderTraversal()
 {
@@ -103,7 +103,7 @@ void BinarySearchTree<Type>::inOrderTraversal(BinarySearchTreeNode<Type> * inSta
     }
 }
 template<class Type>
-void BinarySearchTree<Type>::preOrderTraversal(BinarySearchTreeNode<Type> * root)
+void BinarySearchTree<Type>::preOrderTraversal(BinarySearchTreeNode<Type> * preStart)
 {
     if(preStart != nullptr)
     {
@@ -113,7 +113,7 @@ void BinarySearchTree<Type>::preOrderTraversal(BinarySearchTreeNode<Type> * root
     }
 }
 template<class Type>
-void BinarySearchTree<Type>::postOrderTraversal(BinarySearchTreeNode<Type> * root)
+void BinarySearchTree<Type>::postOrderTraversal(BinarySearchTreeNode<Type> * postStart)
 {
     if(postStart != nullptr)
     {
@@ -123,7 +123,7 @@ void BinarySearchTree<Type>::postOrderTraversal(BinarySearchTreeNode<Type> * roo
     }
 }
 
-template <class Type.
+template <class Type>
 bool BinarySearchTree<Type> :: isBalanced(BinarySearchTreeNode<Type> * start)
 {
     int leftHeight = 0;
@@ -191,14 +191,14 @@ void BinarySearchTree<Type> :: insert(Type itemToInsert)
     }
     else
     {
-        while (current != nnullptr)
+        while (current != nullptr)
         {
             previous = current;
             if(itemToInsert < current->getNodeData())
             {
                 current = current->getLeftChild();
             }
-            else if(ItemToInsert > current->getNodeData())
+            else if(itemToInsert > current->getNodeData())
             {
                 current = current->getRightChild();
             }
@@ -211,7 +211,7 @@ void BinarySearchTree<Type> :: insert(Type itemToInsert)
         }
         if (previous->getNodeData() > itemToInsert)
         {
-            previous->setLeftChild(InsertMe);
+            previous->setLeftChild(insertMe);
         }
         else
         {
@@ -222,7 +222,7 @@ void BinarySearchTree<Type> :: insert(Type itemToInsert)
 }
 
 template <class Type>
-Bool BinarySearchTree<Type> :: contains(Type itemToFind)
+bool BinarySearchTree<Type> :: contains(Type itemToFind)
 {
     BinarySearchTreeNode<Type> * current = root;
     if(current == nullptr)
@@ -307,7 +307,7 @@ void BinarySearchTree<Type> :: remove(Type getRidOfMe)
 }
 
 template <class Type>
-void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeMe)
+void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> *  removeMe)
 {
     BinarySearchTreeNode<Type> * current;
     BinarySearchTreeNode<Type> * previous;
@@ -338,7 +338,7 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
         temp = removeMe;
         removeMe = removeMe->getLeftChild();
         
-        if(previous != nullptr && temp->getNodeData() previous->getNodeData())
+        if(previous != nullptr && temp->getNodeData() < previous->getNodeData())
         {
             previous->setLeftChild(removeMe);
         }
@@ -356,7 +356,7 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
         temp = removeMe;
         removeMe = removeMe->getRightChild();
         
-        if(previous != nullptr && temp->getNodeData() previous->getNodeData())
+        if(previous != nullptr && temp->getNodeData() < previous->getNodeData())
         {
             previous->setLeftChild(removeMe);
         }
@@ -384,7 +384,7 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
         
         if(previous == nullptr)
         {
-            removeMe->setLeftChild(Current->getLeftChild());
+            removeMe->setLeftChild(current->getLeftChild());
             current->getLeftChild()->setRootPointer(removeMe);
         }
         else
@@ -395,7 +395,7 @@ void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * & removeM
         
         delete current;
     }
-    if(removeMe== nullptr||removeMe->getRootPointer == nullptr)
+    if(removeMe== nullptr||removeMe->getRootPointer() == nullptr)
     {
         setRoot(removeMe);
     }
@@ -420,8 +420,7 @@ bool BinarySearchTree<Type> :: isBalanced()
 }
 
 template <class Type>
-bool BinarySearchTree<type> :: isComplete()
-
+bool BinarySearchTree<Type> :: isComplete()
 {
     return isComplete(root);
 }

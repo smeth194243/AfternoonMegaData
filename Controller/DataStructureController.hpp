@@ -39,6 +39,7 @@ private:
     void testDoubleList();
     void testListTiming();
     void testList();
+    void testBinarySearchTreeOperations();
 public:
     DataStructureController();
     void start();

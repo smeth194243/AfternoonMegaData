@@ -9,6 +9,7 @@
 #ifndef StructureTester_hpp
 #define StructureTester_hpp
 
-#include <stdio.h>
+
+
 
 #endif /* StructureTester_hpp */
