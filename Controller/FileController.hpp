@@ -27,6 +27,8 @@ private:
 public:
     DoubleList<FoodItem> readFoodItemDataFromFileAsList(string filename);
     void writeFoodItemDataStatistics(DoubleList<FoodItem> source, string filename);
+    void readCrimeDataToBinarySearchTree(string filename);
+    void readCrimeDataToAVLTree(string filename);
 };
 
 #endif /* FileController_hpp */

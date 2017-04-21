@@ -89,6 +89,8 @@ public:
     bool operator < (const CrimeData & other);
     bool operator > (const CrimeData & other);
     bool operator == (const CrimeData & other);
+    
+    CrimeData(string currentCSVLine);
 };
 
 #endif /* CrimeData_hpp */

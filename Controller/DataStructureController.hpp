@@ -40,6 +40,9 @@ private:
     void testListTiming();
     void testList();
     void testBinarySearchTreeOperations();
+    void testBinarySearchData();
+    void testAVLTreeOperations();
+    void testAVLData();
 public:
     DataStructureController();
     void start();
