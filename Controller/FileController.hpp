@@ -12,10 +12,13 @@
 #include "../Model/DoubleList.hpp"
 #include "../Model/FoodItem.hpp"
 #include "../Model/CrimeData.hpp"
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <sstream>
+#include "../Model/BinarySearchTree.h"
+#include "../Model/AVLTree.h"
+#include <string> // String access
+#include <fstream> // File operations
+#include <iostream> // Console thing
+#include <sstream> // String as stream
+
 
 using namespace std;
 
@@ -24,11 +27,17 @@ class FileController
 private:
     DoubleList<FoodItem> foodItemList;
     
+    
 public:
-    DoubleList<FoodItem> readFoodItemDataFromFileAsList(string filename);
-    void writeFoodItemDataStatistics(DoubleList<FoodItem> source, string filename);
-    void readCrimeDataToBinarySearchTree(string filename);
-    void readCrimeDataToAVLTree(string filename);
+    DoubleList<FoodItem> readDataFromFile(string filename);
+    void writeFoodDataStatistics(DoubleList<FoodItem> source, string fileName);
+    BinarySearchTree<CrimeData> readCrimeDataToBinarySearchTree(string filename);
+    AVLTree<CrimeData> readCrimeDataToAVLTree(string filename);
 };
+
+
+
+
+
 
 #endif /* FileController_hpp */

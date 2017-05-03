@@ -23,6 +23,7 @@
 #include "../Model/BinarySearchTreeNode.hpp"
 #include "../Model/CrimeData.hpp"
 #include "../Controller/FileController.hpp"
+#include "../Model/AVLTree.h"
 #include <string>
 
 using namespace std;
@@ -52,7 +53,8 @@ void DataStructureController :: start()
     //testAdvancedFeatures();
     //testListIntro();
     //testQueue();
-    testStack();
+    //testStack();
+    testAVLTreeOperations();
     
     cout << "Finished testing" << endl;
 }
@@ -317,7 +319,7 @@ void DataStructureController::testBinarySearchData()
     
     treeTimer.startTimer();
     
-    BinarySearchTree<CrimeData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/seth.morris/Documents/crimes.csv");
+    BinarySearchTree<CrimeData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/seth.morris/Documents/crime.csv");
     
     treeTimer.stopTimer();
     
@@ -342,8 +344,6 @@ void DataStructureController::testBinarySearchData()
 
 void DataStructureController:: testAVLTreeOperations()
 {
-    BinarySearchTree<int> numbers;
-    
     AVLTree<int> numbers;
     
     numbers.insert(9843);
@@ -389,7 +389,7 @@ void DataStructureController::testAVLData()
     
     treeTimer.startTimer();
     
-    AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/cody.henrichsen/Documents/crimes.csv");
+    AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/seth.morris/Documents/crimes.csv");
     
     treeTimer.stopTimer();
     

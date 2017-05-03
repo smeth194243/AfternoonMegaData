@@ -8,6 +8,8 @@
 
 #include "CrimeData.hpp"
 #include <cmath>
+#include <sstream>
+
 
 CrimeData :: CrimeData()
 {
@@ -486,12 +488,6 @@ CrimeData :: CrimeData(string currentCSVLine)
     this->setYear(stoi(tempYear));
     
 }
-
-CrimeData.hpp
-
-friend ostream & operator << (ostream &outputStream, const CrimeData & outputData);
-
-CrimeData.cpp
 
 ostream & operator << (ostream &outputStream, const CrimeData & outputData)
 
