@@ -14,6 +14,8 @@
 
 using namespace std;
 
+using namespace std;
+
 template <class Type>
 class BinarySearchTree : public Tree<Type>
 {
@@ -512,7 +514,6 @@ BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRightMostChild(BinaryS
     }
     return temp;
 }
-
 
 
 
