@@ -43,8 +43,10 @@ private:
     void testBinarySearchData();
     void testAVLTreeOperations();
     void testAVLData();
+    void testGraph();
 public:
     DataStructureController();
     void start();
+    
 };
 #endif /* DataStructureController_hpp */
