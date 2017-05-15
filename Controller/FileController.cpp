@@ -1,14 +1,13 @@
 #include "FileController.hpp"
 
-
-
-DoubleList<FoodItem> FileController :: readDataFromFile(string fileName)
+DoubleList<FoodItem> FileController :: readFoodItemDataFromFileAsList(string filename)
 {
     DoubleList<FoodItem> dataSource;
     string currentCSVLine;
     int rowCount = 0;
     
-    ifstream dataFile(fileName);
+    ifstream dataFile(filename);
+    
     if(dataFile.is_open())
     {
         while(!dataFile.eof())
@@ -17,11 +16,11 @@ DoubleList<FoodItem> FileController :: readDataFromFile(string fileName)
             stringstream parseCSV(currentCSVLine);
             
             string title, tempCost, tempCalorie, tempTasty;
+            
             double cost;
             int calories;
             bool isDelish;
-            
-            //Each part as a string in order of the csv - hen convert after using stod, stoi
+            //Eacj [art as a string in order of the CSV = then convert afer using stod, stoi
             getline(parseCSV, title, ',');
             getline(parseCSV, tempCost, ',');
             getline(parseCSV, tempCalorie, ',');
@@ -36,42 +35,39 @@ DoubleList<FoodItem> FileController :: readDataFromFile(string fileName)
                 FoodItem temp(title);
                 temp.setCost(cost);
                 temp.setCalories(calories);
-                temp.isDelicious(isDelish);
+                temp.setDelicious(isDelish);
                 
                 dataSource.add(temp);
             }
             rowCount++;
             
-            cout<< currentCSVLine << endl;
+            cout << currentCSVLine << endl;
         }
         dataFile.close();
     }
     else
     {
-        cerr<< "NO FILE" << endl;
-        
+        cerr << "NO FILE" << endl;
     }
+    
     return dataSource;
 }
 
-
-void FileController :: writeFoodDataStatistics(DoubleList<FoodItem> dataSource, string fileName)
+void FileController :: writeFoodItemDataStatistics(DoubleList<FoodItem> dataSource, string filename)
 {
-    ofstream saveFile(fileName);
+    ofstream saveFile(filename);
     
     if(saveFile.is_open())
     {
         saveFile << "These are the contents of the list" << endl;
-        for(int index =0; index < dataSource.getSize(); index++)
+        for(int index = 0; index < dataSource.getSize(); index++)
         {
             saveFile << "Food Title: " << dataSource.getFromIndex(index).getFoodName() << endl;
-            
         }
-        
     }
     else
     {
-        cerr<< "File unavalible" << endl;
+        cerr << "FILE UNAVALIBLE" << endl;
     }
     saveFile.close();
 }
@@ -81,127 +77,30 @@ BinarySearchTree<CrimeData> FileController :: readCrimeDataToBinarySearchTree(st
 {
     
     BinarySearchTree<CrimeData> crimeData;
-    
-    
-    
     string currentCSVLine;
-    
     int rowCount = 0;
-    
-    
     
     ifstream dataFile(filename);
     
-    
-    
     if(dataFile.is_open())
-        
     {
-        
         while(!dataFile.eof())
-            
         {
-            
             getline(dataFile, currentCSVLine, '\r');
-            
-            
-            
             //Exclude first row headers
-            
             if (rowCount != 0)
-                
             {
-                
                 CrimeData rowData(currentCSVLine);
-                
                 crimeData.insert(rowData);
-                
             }
-            
             rowCount++;
-            
         }
-        
         dataFile.close();
-        
     }
-    
     else
-        
     {
-        
         cerr << "NO FILE" << endl;
-        
     }
-    
-    
-    
-    
-    
-    return crimeData;
-    
-}
-
-AVLTree<CrimeData> FileController :: readCrimeDataToAVLTree(string filename)
-
-{
-    
-    AVLTree<CrimeData> crimeData;
-    
-    
-    
-    string currentCSVLine;
-    
-    int rowCount = 0;
-    
-    
-    
-    ifstream dataFile(filename);
-    
-    
-    
-    if(dataFile.is_open())
-        
-    {
-        
-        while(!dataFile.eof())
-            
-        {
-            
-            getline(dataFile, currentCSVLine, '\r');
-            
-            
-            
-            //Exclude first row headers
-            
-            if (rowCount != 0)
-                
-            {
-                
-                CrimeData rowData(currentCSVLine);
-                
-                crimeData.insert(rowData);
-                
-            }
-            
-            rowCount++;
-            
-        }
-        
-        dataFile.close();
-        
-    }
-    
-    else
-        
-    {
-        
-        cerr << "NO FILE" << endl;
-        
-    }
-    
-    
-    
     return crimeData;
     
 }

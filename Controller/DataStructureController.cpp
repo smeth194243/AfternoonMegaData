@@ -25,6 +25,7 @@
 #include "../Controller/FileController.hpp"
 #include "../Model/AVLTree.h"
 #include "../Model/Graph.h"
+#include "../Model/Hashtable.hpp"
 #include <string>
 
 using namespace std;
@@ -55,7 +56,8 @@ void DataStructureController :: start()
     //testListIntro();
     //testQueue();
     //testStack();
-    testAVLTreeOperations();
+    //testAVLTreeOperations();
+    testGraph();
     
     cout << "Finished testing" << endl;
 }
@@ -390,7 +392,7 @@ void DataStructureController::testAVLData()
     
     treeTimer.startTimer();
     
-    AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/seth.morris/Documents/crimes.csv");
+    AVLTree<CrimeData> crimeTree = fileData.readCrimeDataToAVLTree("/Users/smor7432/Documents/crimes.csv");
     
     treeTimer.stopTimer();
     
@@ -429,7 +431,7 @@ void DataStructureController :: testGraph()
     connectedLife.addVertex("Games");
     connectedLife.addVertex("Computer Programming");
     connectedLife.addVertex("Game Dev");
-    connectedLife.addVertex("Hiking");
+    connectedLife.addVertex("Biking");
     
     connectedLife.addEdge(0,1);
     connectedLife.addEdge(0,2);
@@ -505,4 +507,23 @@ void DataStructureController :: testGraph()
     connectedLife.depthFirstTraversal(connectedLife, 0);
     
 }
+
+void DataStructureController:: testHashTable(){
+    HashTable<int> hashTable;
+    hashTable.add(4);
+    hashTable.add(5);
+    hashTable.add(6);
+    hashTable.add(14);
+    hashTable.add(16);
+    hashTable.add(19);
+    hashTable.add(24);
+    hashTable.add(35);
+    hashTable.add(46);
+    hashTable.add(64);
+    
+    hashTable.displayContents();
+    HashNode<int> number;
+    number.setData(4);
+}
+
 

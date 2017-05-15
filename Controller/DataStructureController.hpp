@@ -44,6 +44,7 @@ private:
     void testAVLTreeOperations();
     void testAVLData();
     void testGraph();
+    void testHashTable();
 public:
     DataStructureController();
     void start();

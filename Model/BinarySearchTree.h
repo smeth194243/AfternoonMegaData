@@ -12,31 +12,29 @@
 #include "BinarySearchTreeNode.hpp"
 #include <iostream>
 
-using namespace std;
+
 
 using namespace std;
 
 template <class Type>
 class BinarySearchTree : public Tree<Type>
 {
-    
 protected:
     BinarySearchTreeNode<Type> * root;
     
     int calculateSize(BinarySearchTreeNode<Type> * root);
     int calculateHeight(BinarySearchTreeNode<Type> * root);
-    bool isComplete(BinarySearchTreeNode<Type> * root, int index, int size);
     bool isBalanced(BinarySearchTreeNode<Type> * root);
+    bool isComplete(BinarySearchTreeNode<Type> * start, int index, int size);
     
     void inOrderTraversal(BinarySearchTreeNode<Type> * inStart);
     void preOrderTraversal(BinarySearchTreeNode<Type> * preStart);
     void postOrderTraversal(BinarySearchTreeNode<Type> * postStart);
     
-    void removeNode(BinarySearchTreeNode<Type> *  removeMe);
-    
     BinarySearchTreeNode<Type> * getRightMostChild(BinarySearchTreeNode<Type> * current);
     BinarySearchTreeNode<Type> * getLeftMostChild(BinarySearchTreeNode<Type> * current);
     
+    void removeNode(BinarySearchTreeNode<Type> * removeMe);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
@@ -61,7 +59,6 @@ public:
     Type findMaximum();
 };
 
-
 template <class Type>
 BinarySearchTree<Type> :: BinarySearchTree() : Tree<Type>()
 {
@@ -69,55 +66,117 @@ BinarySearchTree<Type> :: BinarySearchTree() : Tree<Type>()
 }
 
 template <class Type>
-BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRoot()
-{
-    return root;
-}
-
-template <class Type>
-BinarySearchTree<Type>:: ~BinarySearchTree()
+BinarySearchTree<Type> :: ~BinarySearchTree()
 {
     delete root;
-    
-    
+}
+template <class Type>
+BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRoot()
+{
+    return this->root;
 }
 
 template <class Type>
 void BinarySearchTree<Type> :: setRoot(BinarySearchTreeNode<Type> * root)
 {
-    
     this->root = root;
 }
 
 template <class Type>
-void BinarySearchTree<Type> ::inOrderTraversal()
+void BinarySearchTree<Type> :: inOrderTraversal()
 {
     inOrderTraversal(root);
 }
 
 template <class Type>
-void BinarySearchTree<Type> ::preOrderTraversal()
+void BinarySearchTree<Type> :: preOrderTraversal()
 {
     preOrderTraversal(root);
-    
 }
 
 template <class Type>
-void BinarySearchTree<Type> ::postOrderTraversal()
+void BinarySearchTree<Type> :: postOrderTraversal()
 {
     postOrderTraversal(root);
-    
 }
 
-
+template <class Type>
+bool BinarySearchTree<Type> :: isComplete(BinarySearchTreeNode<Type> * start, int index, int size)
+{
+    if(start == nullptr)
+    {
+        return true;
+    }
+    
+    if(index >= size)
+    {
+        return false;
+    }
+    
+    return (isComplete(start->getLeftChild(), 2 * index + 1, size) && isComplete(start->getRightChild(), 2 * index + 2, size));
+}
 
 template <class Type>
+bool BinarySearchTree<Type> :: isBalanced(BinarySearchTreeNode<Type> * start)
+{
+    int leftHeight = 0;
+    int rightHeight = 0;
+    
+    if(start == nullptr)
+    {
+        return true;
+    }
+    
+    leftHeight = calculateHeight(start->getLeftChild());
+    rightHeight = calculateHeight(start->getRightChild());
+    
+    int heightDifference = abs(leftHeight-rightHeight);
+    bool leftBalanced = isBalanced(start->getLeftChild());
+    bool rightBalanced = isBalanced(start->getRightChild());
+    
+    if(heightDifference <= 1 && leftBalanced && rightBalanced)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+template <class Type>
+int BinarySearchTree<Type> :: calculateHeight(BinarySearchTreeNode<Type> * start)
+{
+    if(start == nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1 + max(calculateHeight(start->getLeftChild()), calculateHeight(start->getRightChild()));
+    }
+}
+template <class Type>
+int BinarySearchTree<Type> :: calculateSize(BinarySearchTreeNode<Type> * start)
+{
+    int count = 1;
+    if(start == nullptr)
+    {
+        return 0;
+    }
+    else
+    {
+        count += calculateSize(start->getLeftChild());
+        count += calculateSize(start->getRightChild());
+        return count;
+    }
+}
+
+template<class Type>
 void BinarySearchTree<Type> :: inOrderTraversal(BinarySearchTreeNode<Type> * inStart)
 {
     if(inStart != nullptr)
     {
         inOrderTraversal(inStart->getLeftChild());
-        cout << "Node Contents; " << inStart->getNodeData() << endl;
+        cout << "Node Contents: " << inStart->getNodeData() << endl;
         inOrderTraversal(inStart->getRightChild());
     }
 }
@@ -127,7 +186,7 @@ void BinarySearchTree<Type> :: preOrderTraversal(BinarySearchTreeNode<Type> * pr
 {
     if(preStart != nullptr)
     {
-        cout << "Node Contents; " << preStart->getNodeData() << endl;
+        cout << "Node Contents: " << preStart->getNodeData() << endl;
         inOrderTraversal(preStart->getLeftChild());
         inOrderTraversal(preStart->getRightChild());
     }
@@ -138,53 +197,9 @@ void BinarySearchTree<Type> :: postOrderTraversal(BinarySearchTreeNode<Type> * p
 {
     if(postStart != nullptr)
     {
-        postOrderTraversal(postStart->getLeftChild());
-        postOrderTraversal(postStart->getRightChild());
-        cout << "Node Contents; " << postStart->getNodeData() << endl;
-    }
-}
-
-template <class Type>
-void BinarySearchTree<Type> :: insert(Type itemToInsert)
-{
-    BinarySearchTreeNode<Type> * insertMe = new BinarySearchTreeNode<Type>(itemToInsert);
-    BinarySearchTreeNode<Type> * previous = nullptr;
-    BinarySearchTreeNode<Type> * current = root;
-    
-    if(current == nullptr)
-    {
-        root = insertMe;
-    }
-    else
-    {
-        while(current != nullptr)
-        {
-            previous = current;
-            if(itemToInsert < current->getNodeData())
-            {
-                current = current->getLeftChild();
-            }
-            else if(itemToInsert > current-> getNodeData())
-            {
-                current = current->getRightChild();
-            }
-            else
-            {
-                cerr << "ITEM ALREADY EXISTS CLOSING" << endl;
-                delete insertMe;
-                return;
-                
-            }
-        }
-        if(previous->getNodeData() > itemToInsert)
-        {
-            previous->setLeftChild(insertMe);
-        }
-        else
-        {
-            previous->setRightChild(insertMe);
-        }
-        insertMe->setRootPointer(previous);
+        inOrderTraversal(postStart->getLeftChild());
+        inOrderTraversal(postStart->getRightChild());
+        cout << "Node Contents: " << postStart->getNodeData() << endl;
     }
 }
 
@@ -205,32 +220,75 @@ bool BinarySearchTree<Type> :: contains(Type itemToFind)
                 return true;
             }
             else if(itemToFind < current->getNodeData())
+                
             {
-                current = current->getLeftChild();
+                current = current ->getLeftChild();
             }
             else
             {
                 current = current->getRightChild();
             }
-            
         }
         return false;
     }
+}
+template <class Type>
+void BinarySearchTree<Type> :: insert(Type itemToInsert)
+{
+    BinarySearchTreeNode<Type> * insertMe = new BinarySearchTreeNode<Type>(itemToInsert);
+    BinarySearchTreeNode<Type> * previous = nullptr;
+    BinarySearchTreeNode<Type> * current = root;
     
+    if(current == nullptr)
+    {
+        root = insertMe;
+    }
+    else
+    {
+        while(current != nullptr)
+        {
+            previous = current;
+            if(itemToInsert < current->getNodeData())
+            {
+                current = current->getLeftChild();
+            }
+            else if(itemToInsert > current->getNodeData())
+            {
+                current = current->getRightChild();
+            }
+            else
+            {
+                cerr << "Item exists already - Exiting" << endl;
+                delete insertMe;
+                return;
+            }
+        }
+        
+        if(previous->getNodeData  () > itemToInsert)
+        {
+            previous->setLeftChild(insertMe);
+        }
+        else
+        {
+            previous->setRightChild(insertMe);
+        }
+        insertMe->setRootPointer(previous);
+    }
 }
 
 template <class Type>
 void BinarySearchTree<Type> :: remove(Type getRidOfMe)
+
 {
     if(root == nullptr)
     {
-        cout<<"Empty tree moron"<<endl;
+        cout << "Empty tree so removal is not possible" << endl;
     }
     else
     {
         BinarySearchTreeNode<Type> * current = root;
         BinarySearchTreeNode<Type> * previous = nullptr;
-        bool hasBeenFound = true;
+        bool hasBeenFound = false;
         
         while(current != nullptr && !hasBeenFound)
         {
@@ -253,7 +311,7 @@ void BinarySearchTree<Type> :: remove(Type getRidOfMe)
         }
         if(current == nullptr)
         {
-            cerr<<"Item not found, removal unsuccessful" << endl;
+            cerr << "Item not found, removal unsuccessful" << endl;
         }
         else if(hasBeenFound)
         {
@@ -261,7 +319,7 @@ void BinarySearchTree<Type> :: remove(Type getRidOfMe)
             {
                 removeNode(root);
             }
-            else if(getRidOfMe < previous->getNodeData())
+            else if (getRidOfMe < previous->getNodeData())
             {
                 removeNode(previous->getLeftChild());
             }
@@ -273,16 +331,15 @@ void BinarySearchTree<Type> :: remove(Type getRidOfMe)
     }
 }
 
-
 template <class Type>
-void BinarySearchTree<Type> ::removeNode(BinarySearchTreeNode<Type> *  removeMe)
+void BinarySearchTree<Type> :: removeNode(BinarySearchTreeNode<Type> * removeMe)
 {
     BinarySearchTreeNode<Type> * current;
     BinarySearchTreeNode<Type> * previous;
     BinarySearchTreeNode<Type> * temp;
     
     previous = removeMe->getRootPointer();
-    //no child
+    
     if(removeMe->getRightChild() == nullptr && removeMe->getLeftChild() == nullptr)
     {
         temp = removeMe;
@@ -291,16 +348,14 @@ void BinarySearchTree<Type> ::removeNode(BinarySearchTreeNode<Type> *  removeMe)
         if(previous != nullptr && removeMe->getNodeData() < previous->getNodeData())
         {
             previous->setLeftChild(removeMe);
-            
         }
-        else if(previous != nullptr && removeMe ->getNodeData() > previous->getNodeData())
+        else if(previous != nullptr && removeMe->getNodeData() > previous->getNodeData())
         {
             previous->setRightChild(removeMe);
         }
         
         delete temp;
     }
-    //left child
     else if(removeMe->getRightChild() == nullptr)
     {
         temp = removeMe;
@@ -319,17 +374,16 @@ void BinarySearchTree<Type> ::removeNode(BinarySearchTreeNode<Type> *  removeMe)
         
         delete temp;
     }
-    //right child
     else if(removeMe->getLeftChild() == nullptr)
     {
         temp = removeMe;
         removeMe = removeMe->getRightChild();
         
-        if(previous != nullptr && temp->getNodeData() < previous->getNodeData())
+        if(previous != nullptr && removeMe->getNodeData() < previous->getNodeData())
         {
             previous->setLeftChild(removeMe);
         }
-        else if(previous != nullptr && temp->getNodeData() > previous->getNodeData())
+        else if(previous != nullptr && removeMe->getNodeData() > previous->getNodeData())
         {
             previous->setRightChild(removeMe);
         }
@@ -338,7 +392,6 @@ void BinarySearchTree<Type> ::removeNode(BinarySearchTreeNode<Type> *  removeMe)
         
         delete temp;
     }
-    //both children
     else
     {
         current = removeMe->getLeftChild();
@@ -359,95 +412,24 @@ void BinarySearchTree<Type> ::removeNode(BinarySearchTreeNode<Type> *  removeMe)
             {
                 current->getLeftChild()->setRootPointer(removeMe);
             }
+            
         }
         else
         {
+            previous->setRightChild(current->getLeftChild());
             if(current->getLeftChild() != nullptr)
             {
-                previous->setRightChild(current->getLeftChild());
                 current->getLeftChild()->setRootPointer(previous);
             }
         }
         
         delete current;
     }
-    if(removeMe->getRootPointer() == nullptr || removeMe->getRootPointer() == nullptr)
+    if(removeMe ==  nullptr || removeMe->getRootPointer() == nullptr)
     {
         setRoot(removeMe);
     }
-    
 }
-
-template <class Type>
-int BinarySearchTree<Type> :: calculateSize(BinarySearchTreeNode<Type> * start)
-{
-    int count = 1;
-    if(start == nullptr)
-    {
-        return 0;
-    }
-    else
-    {
-        count += calculateSize(start->getLeftChild());
-        count += calculateSize(start->getRightChild());
-        return count;
-    }
-}
-
-template <class Type>
-int BinarySearchTree<Type> :: calculateHeight(BinarySearchTreeNode<Type> * start)
-{
-    if(start == nullptr)
-    {
-        return 0;
-    }
-    else
-    {
-        return 1 + max(calculateHeight(start->getLeftChild()),
-                       calculateHeight(start->getRightChild()));
-    }
-}
-
-template <class Type>
-bool BinarySearchTree<Type> :: isBalanced(BinarySearchTreeNode<Type> * start)
-{
-    int leftHeight = 0;
-    int rightHeight = 0;
-    
-    if(start == nullptr)
-    {
-        return true;
-    }
-    leftHeight = calculateHeight(start->getLeftChild());
-    rightHeight = calculateHeight(start->getRightChild());
-    
-    int heightDifference = abs(leftHeight-rightHeight);
-    bool leftBalanced = isBalanced(start->getLeftChild());
-    bool rightBalanced = isBalanced(start->getRightChild());
-    
-    
-    if(heightDifference <= 1 && leftBalanced && rightBalanced)
-    {
-        return true;
-    }
-    
-    return false;
-}
-template <class Type>
-bool BinarySearchTree<Type> :: isComplete(BinarySearchTreeNode<Type> * start, int index, int size)
-{
-    if(start == nullptr)
-    {
-        
-        return true;
-    }
-    if(index >= size)
-    {
-        return false;
-    }
-    return(isComplete(start->getLeftChild(),2 * index+1, size) && isComplete(start->getRightChild(), 2* index+2,size));
-}
-
 
 template <class Type>
 int BinarySearchTree<Type> :: getSize()
@@ -461,7 +443,6 @@ int BinarySearchTree<Type> :: getHeight()
     return calculateHeight(root);
 }
 
-
 template <class Type>
 bool BinarySearchTree<Type> :: isBalanced()
 {
@@ -473,6 +454,8 @@ bool BinarySearchTree<Type> :: isComplete()
 {
     int index = 0;
     int size = getSize();
+    
+    
     return isComplete(root, index, size);
 }
 
@@ -482,8 +465,9 @@ BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getLeftMostChild(BinarySe
     BinarySearchTreeNode<Type> * temp = current;
     while(temp->getLeftChild() != nullptr)
     {
-        temp =  temp->getLeftChild();
+        temp = temp->getLeftChild();
     }
+    
     return temp;
 }
 
@@ -494,7 +478,6 @@ Type BinarySearchTree<Type> :: findMinimum()
     BinarySearchTreeNode<Type> * smallest = getLeftMostChild(root);
     return smallest->getNodeData();
 }
-
 
 template <class Type>
 Type BinarySearchTree<Type> :: findMaximum()
@@ -510,14 +493,8 @@ BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRightMostChild(BinaryS
     BinarySearchTreeNode<Type> * temp = current;
     while(temp->getRightChild() != nullptr)
     {
-        temp =  temp->getRightChild();
+        temp = temp->getRightChild();
     }
+    
     return temp;
-}
-
-
-
-
-
-
-#endif /* BinarySearchTree_h */
+}#endif /* BinarySearchTree_h */

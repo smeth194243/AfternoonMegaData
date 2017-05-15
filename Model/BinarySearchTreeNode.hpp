@@ -63,13 +63,6 @@ BinarySearchTreeNode<Type> :: BinarySearchTreeNode(Type data) : Node<Type>(data)
     
 }
 
-
-
-
-
-
-
-
 template <class Type>
 BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getLeftChild()
 {
@@ -105,5 +98,4 @@ void BinarySearchTreeNode<Type> :: setRightChild(BinarySearchTreeNode<Type> * ri
 {
     this->rightChild = rightChild;
 }
-
 #endif /*BinarySearchTreeNode_h*/
