@@ -8,6 +8,7 @@
 
 #ifndef BinarySearchTree_h
 #define BinarySearchTree_h
+
 #include "Tree.hpp"
 #include "BinarySearchTreeNode.hpp"
 #include <iostream>
@@ -187,8 +188,8 @@ void BinarySearchTree<Type> :: preOrderTraversal(BinarySearchTreeNode<Type> * pr
     if(preStart != nullptr)
     {
         cout << "Node Contents: " << preStart->getNodeData() << endl;
-        inOrderTraversal(preStart->getLeftChild());
-        inOrderTraversal(preStart->getRightChild());
+        preOrderTraversal(preStart->getLeftChild());
+        preOrderTraversal(preStart->getRightChild());
     }
 }
 
@@ -197,8 +198,8 @@ void BinarySearchTree<Type> :: postOrderTraversal(BinarySearchTreeNode<Type> * p
 {
     if(postStart != nullptr)
     {
-        inOrderTraversal(postStart->getLeftChild());
-        inOrderTraversal(postStart->getRightChild());
+        postOrderTraversal(postStart->getLeftChild());
+        postOrderTraversal(postStart->getRightChild());
         cout << "Node Contents: " << postStart->getNodeData() << endl;
     }
 }
@@ -497,4 +498,5 @@ BinarySearchTreeNode<Type> * BinarySearchTree<Type> :: getRightMostChild(BinaryS
     }
     
     return temp;
-}#endif /* BinarySearchTree_h */
+}
+#endif /* BinarySearchTree_h */

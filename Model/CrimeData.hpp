@@ -91,6 +91,7 @@ public:
     bool operator == (const CrimeData & other);
     
     CrimeData(string currentCSVLine);
+    friend ostream & operator << (ostream &outputStream, const CrimeData & outputData);
 };
 
 #endif /* CrimeData_hpp */

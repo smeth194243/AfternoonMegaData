@@ -14,18 +14,15 @@
 template <class Type>
 class BinarySearchTreeNode : public Node<Type>
 {
-    
 private:
-    
     BinarySearchTreeNode<Type> * root;
     BinarySearchTreeNode<Type> * leftChild;
     BinarySearchTreeNode<Type> * rightChild;
     
 public:
-    
     BinarySearchTreeNode();
-    ~BinarySearchTreeNode();
     BinarySearchTreeNode(Type data);
+    ~BinarySearchTreeNode();
     
     BinarySearchTreeNode<Type> * getRootPointer();
     BinarySearchTreeNode<Type> * getLeftChild();
@@ -36,22 +33,12 @@ public:
     void setRightChild(BinarySearchTreeNode<Type> * right);
 };
 
-
 template <class Type>
 BinarySearchTreeNode<Type> :: BinarySearchTreeNode() : Node<Type>()
 {
-    this->setNodeData(nullptr);
     this->root = nullptr;
     this->leftChild = nullptr;
     this->rightChild = nullptr;
-    
-}
-
-template <class Type>
-BinarySearchTreeNode<Type> :: ~BinarySearchTreeNode()
-{
-    delete rightChild;
-    delete leftChild;
 }
 
 template <class Type>
@@ -60,25 +47,29 @@ BinarySearchTreeNode<Type> :: BinarySearchTreeNode(Type data) : Node<Type>(data)
     this->root = nullptr;
     this->leftChild = nullptr;
     this->rightChild = nullptr;
-    
 }
 
 template <class Type>
+BinarySearchTreeNode<Type> :: ~BinarySearchTreeNode()
+{
+    delete leftChild;
+    delete rightChild;
+}
+template <class Type>
+BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getRootPointer()
+{
+    return this->root;
+}
+template <class Type>
 BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getLeftChild()
 {
-    return leftChild;
+    return this->leftChild;
 }
 
 template <class Type>
 BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getRightChild()
 {
-    return rightChild;
-}
-
-template <class Type>
-BinarySearchTreeNode<Type> * BinarySearchTreeNode<Type> :: getRootPointer()
-{
-    return root;
+    return this->rightChild;
 }
 
 template <class Type>
@@ -88,14 +79,14 @@ void BinarySearchTreeNode<Type> :: setRootPointer(BinarySearchTreeNode<Type> * r
 }
 
 template <class Type>
-void BinarySearchTreeNode<Type> :: setLeftChild(BinarySearchTreeNode<Type> * leftChild)
+void BinarySearchTreeNode<Type> :: setLeftChild(BinarySearchTreeNode<Type> * left)
 {
-    this->leftChild = leftChild;
+    this->leftChild = left;
 }
 
 template <class Type>
-void BinarySearchTreeNode<Type> :: setRightChild(BinarySearchTreeNode<Type> * rightChild)
+void BinarySearchTreeNode<Type> :: setRightChild(BinarySearchTreeNode<Type> * right)
 {
-    this->rightChild = rightChild;
+    this->rightChild = right;
 }
-#endif /*BinarySearchTreeNode_h*/
+#endif /* BinarySearchTreeNode_h */

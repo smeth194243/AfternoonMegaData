@@ -13,6 +13,7 @@
 #include "../Model/FoodItem.hpp"
 #include "../Model/BinarySearchTree.h"
 #include "../Model/CrimeData.hpp"
+#include "AVLTree.h"
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -28,10 +29,7 @@ public:
     DoubleList<FoodItem> readFoodItemDataFromFileAsList(string filename);
     void writeFoodItemDataStatistics(DoubleList<FoodItem> source, string filename);
     BinarySearchTree<CrimeData> readCrimeDataToBinarySearchTree(string filename);
+    AVLTree<CrimeData> readCrimeDataToAVLTree(string filename);
 };
-
-
-
-
 
 #endif /* FileController_hpp */

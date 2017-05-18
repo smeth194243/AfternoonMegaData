@@ -57,8 +57,8 @@ void DataStructureController :: start()
     //testQueue();
     //testStack();
     //testAVLTreeOperations();
-    testGraph();
-    
+    //testGraph();
+    testHashTable();
     cout << "Finished testing" << endl;
 }
 
@@ -276,8 +276,9 @@ void DataStructureController :: testList()
 void DataStructureController::testBinarySearchTreeOperations()
 
 {
-    
     BinarySearchTree<int> numbers;
+    
+    cout << "Size should be 0 and is: " << numbers.getSize() << endl;
     
     numbers.insert(9843);
     
@@ -287,11 +288,17 @@ void DataStructureController::testBinarySearchTreeOperations()
     
     numbers.insert(-123);
     
+    numbers.preOrderTraversal();
+    
+    cout << "Size should be 4 and is: " << numbers.getSize() << endl;
+    
     numbers.insert(23465);
     
     numbers.insert(10); // won't go in
     
     numbers.insert(43243);
+    
+    numbers.postOrderTraversal();
     
     numbers.insert(-45677654);
     
@@ -310,7 +317,6 @@ void DataStructureController::testBinarySearchTreeOperations()
     cout << "Height should be 4 and is: " << numbers.getHeight() << endl;
     
     cout << "Balanced should be false || 0 and is: " << numbers.isBalanced() << endl;
-    
 }
 
 void DataStructureController::testBinarySearchData()
@@ -322,7 +328,7 @@ void DataStructureController::testBinarySearchData()
     
     treeTimer.startTimer();
     
-    BinarySearchTree<CrimeData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/seth.morris/Documents/crime.csv");
+    BinarySearchTree<CrimeData> crimeTree = fileData.readCrimeDataToBinarySearchTree("/Users/smor7432/Documents/crime.csv");
     
     treeTimer.stopTimer();
     
@@ -375,12 +381,22 @@ void DataStructureController:: testAVLTreeOperations()
     
     numbers.inOrderTraversal();
     
+    numbers.preOrderTraversal();
+    
+    numbers.postOrderTraversal();
+    
+    numbers.insert(92165); // won't go in
+    
+    numbers.insert(2);
+    
+    numbers.remove(10);
+    
+    numbers.remove(2);
     
     
     cout << "Height should be 4 and is: " << numbers.getHeight() << endl;
     
     cout << "Balanced should be true || 1 and is: " << numbers.isBalanced() << endl;
-    
 }
 
 void DataStructureController::testAVLData()
@@ -508,7 +524,8 @@ void DataStructureController :: testGraph()
     
 }
 
-void DataStructureController:: testHashTable(){
+void DataStructureController:: testHashTable()
+{
     HashTable<int> hashTable;
     hashTable.add(4);
     hashTable.add(5);

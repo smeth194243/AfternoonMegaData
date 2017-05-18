@@ -17,7 +17,7 @@ private:
     long key;
 public:
     HashNode();
-    HashNode(Type, data);
+    HashNode(Type data);
     
     Type getData();
     long getKey() const;
@@ -31,7 +31,7 @@ HashNode<Type> :: HashNode()
 }
 
 template <class Type>
-HashNode<Type> :: HashNode(Type, data)
+HashNode<Type> :: HashNode(Type data)
 {
     this->key = rand();
     this->data = data;

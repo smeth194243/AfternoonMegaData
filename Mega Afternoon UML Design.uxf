@@ -671,12 +671,13 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>510</y>
-      <w>50</w>
-      <h>15</h>
+      <x>25</x>
+      <y>495</y>
+      <w>290</w>
+      <h>255</h>
     </coordinates>
     <panel_attributes>Model::Graph&lt;Type&gt;
+bg=cyan
 --
 - static const MAXIMUM: int
 - adjacencyMatrix: bool[][]

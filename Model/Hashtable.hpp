@@ -25,7 +25,7 @@ private:
     HashNode<Type> ** hashTableStorage;
     bool isPrime(long sampleNumber);
     void resize();
-    long nextPrime(long current);
+    long nextPrime();
     long findPosition(HashNode<Type> * data);
     long handleCollision(HashNode<Type> * data, long currentPosition);
     
@@ -44,7 +44,7 @@ HashTable<Type> :: HashTable()
     this->capacity= 101;
     this->efficiencyPercentage = 0.667;
     this->size = 0;
-    this->hashTableStorage = HashNode<Type> * [capacity];
+    this->hashTableStorage = new HashNode<Type> * [capacity];
     std:: fill_n(hashTableStorage, capacity, nullptr);
 }
 
@@ -55,9 +55,9 @@ HashTable<Type> :: ~HashTable()
 }
 
 template <class Type>
-int HashTable<Type> :: getNextPrime()
+long HashTable<Type> :: nextPrime()
 {
-    int nextPrime = (this->capacity * 2) +1;
+    long nextPrime = (this->capacity * 2) +1;
     
     while(!isPrime(nextPrime))
     {
@@ -85,7 +85,7 @@ bool HashTable<Type> :: isPrime(long canidateNumber)
     {
         for(int next = 3; next <= sqrt(canidateNumber) +1; next +=2)
         {
-            if(canidateNumber % next = 0)
+            if(canidateNumber % next == 0)
             {
                 return false;
             }
@@ -98,7 +98,7 @@ template <class Type>
 long HashTable<Type> :: findPosition(HashNode<Type> * data)
 {
     long insertPosition = data->getKey() % this->capacity;
-    return insertposition;
+    return insertPosition;
 }
 
 template <class Type>
@@ -122,14 +122,14 @@ long HashTable<Type> :: handleCollision(HashNode<Type> * data, long currentPosit
 }
 
 template <class Type>
-void HashTable :: displayContents()
+void HashTable<Type> :: displayContents()
 
 {
     for(long index = 0; index < capacity; index ++)
     {
         if(hashTableStorage[index] != nullptr)
         {
-            cout << index << ": " << hashTable[index]->getData() << endl;
+            cout << index << ": " << hashTableStorage[index]->getData() << endl;
         }
     }
 }
@@ -155,7 +155,7 @@ bool HashTable<Type> :: remove(Type data)
 template <class Type>
 void HashTable<Type> :: resize()
 {
-    long updatedCapacity = next prime();
+    long updatedCapacity = nextPrime();
     HashNode<Type> ** tempStorage = new HashNode<Type> * [updatedCapacity];
     
     std:: fill_n(tempStorage, updatedCapacity, nullptr);
