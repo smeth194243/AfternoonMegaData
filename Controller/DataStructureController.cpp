@@ -57,8 +57,8 @@ void DataStructureController :: start()
     //testQueue();
     //testStack();
     //testAVLTreeOperations();
-    //testGraph();
-    testHashTable();
+    testGraph();
+    //testHashTable();
     cout << "Finished testing" << endl;
 }
 
